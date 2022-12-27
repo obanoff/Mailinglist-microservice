@@ -75,9 +75,9 @@ func emailEntryFromRow(row *sql.Rows) (*EmailEntry, error) {
 func CreateEmail(db *sql.DB, email string) error {
 	_, err := db.Exec(`
 		INSERT INTO emails(email, confirmed_at, opt_out)
-		VALUES (
+		VALUES 
 			(?, 0, false)
-		);
+		;
 	`, email) // email will be substituted for the question mark
 	if err != nil {
 		log.Println(err)
